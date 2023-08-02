@@ -32,6 +32,8 @@ jobs:
         python -m pip install poetry
         poetry install --only test,dev
     
-    - name: Lint with ruff
+    - name: Lint with ruff, isort, black
       run: |
         poetry run ruff check . --force-exclude
+        poetry run isort . --filter-files --profile black
+        poetry run black .
