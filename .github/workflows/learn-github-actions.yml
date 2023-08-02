@@ -37,3 +37,8 @@ jobs:
         poetry run ruff check . --force-exclude
         poetry run isort . --filter-files --profile black
         poetry run black .
+
+    - name: pytest
+      run: |
+        poetry run pytest tests --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
+        
