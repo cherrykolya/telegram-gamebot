@@ -37,6 +37,5 @@ repos:
         language: system
         entry: poetry run cz
         args: [ 'check', '--commit-msg-file', '.git/COMMIT_EDITMSG' ]
-        stages: [ commit-msg ]
         pass_filenames: false
         always_run: true
