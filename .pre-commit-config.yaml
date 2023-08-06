@@ -33,9 +33,13 @@ repos:
         types_or: [ python, pyi ]
 
       - id: commitizen
-        name: commitizen
-        language: system
-        entry: poetry run cz
-        args: [ 'check', '--commit-msg-file', '.git/COMMIT_EDITMSG' ]
-        pass_filenames: false
-        always_run: true
+        name: commitizen check
+        description: >
+          Check whether the current commit message follows commiting rules. Allow
+          empty commit messages by default, because they typically indicate to Git
+          that the commit should be aborted.
+        entry: cz check
+        args: [--allow-abort, --commit-msg-file]
+        stages: [commit-msg]
+        language: python
+        language_version: python3
